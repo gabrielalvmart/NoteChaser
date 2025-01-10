@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteChaser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function selectTrack(event) {
+            event.preventDefault();
+            const track = document.querySelector('select[name="track"]').value;
+            fetch(`/selectTrack?track=${track}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.track) {
+                        document.getElementById('track-details').innerText = `Selected Track: ${data.track}`;
+                        document.getElementById('audio-player').src = `/app/files/${data.track}`;
+                    } else {
+                        alert('Error selecting track');
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+    <div class="top-bar">NoteChaser</div>
+    <div class="container">
+        <div class="flex-container">
+            <div class="track-box">
+                <h2>Track Upload/Selection</h2>
+                <div class="upload-section">
+                    <h3>Upload a Track</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+                <div class="tracks-section">
+                    <h3>Available Tracks</h3>
+                    <form method="get" onsubmit="selectTrack(event)">
+                        <select name="track">
+                            {% for file in files %}
+                                <option value="{{ file }}">{{ file }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Select Track">
+                    </form>
+                </div>
+            </div>
+            <div class="track-details">
+                <h2>Track Details</h2>
+                <p id="track-details">No track selected</p>
+                <audio id="audio-player" controls>
+                    <source id="audio-source" src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <div class="transcription-controls">
+            <h2>Transcription Controls</h2>
+            <button onclick="startTranscription()">Start Transcription</button>
+            <button onclick="stopTranscription()">Stop Transcription</button>
+            <button onclick="window.location.href='/downloadSpectrogram'">Download Spectrogram</button>
+            <p id="transcription-progress">Progress: 0%</p>
+        </div>
+        <div class="transcription-results">
+            <h2>Transcription Results</h2>
+            <div class="midi-files-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Filename</th>
+                            <th>Date Created</th>
+                            <th>Size</th>
+                            <th>Other Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Soprano.mid</td>
+                            <td>2023-10-01</td>
+                            <td>15 KB</td>
+                            <td>Sample Info</td>
+                        </tr>
+                        <tr>
+                            <td>Alto.mid</td>
+                            <td>2023-10-01</td>
+                            <td>14 KB</td>
+                            <td>Sample Info</td>
+                        </tr>
+                        <tr>
+                            <td>Tenor.mid</td>
+                            <td>2023-10-01</td>
+                            <td>16 KB</td>
+                            <td>Sample Info</td>
+                        </tr>
+                        <tr>
+                            <td>Bass.mid</td>
+                            <td>2023-10-01</td>
+                            <td>13 KB</td>
+                            <td>Sample Info</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

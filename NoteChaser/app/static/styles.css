@@ -1,0 +1,125 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.top-bar {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff4081;
+}
+.container {
+    padding: 20px;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Add gap between sections */
+}
+.track-box {
+    width: 70%; /* Adjust width */
+    background-color: #1f1f1f;
+    border: 1px solid #ff4081;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.track-details {
+    width: 25%; /* Adjust width */
+    background-color: #1f1f1f;
+    border: 1px solid #ff4081;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.track-box h2, .track-details h2, .transcription-controls h2, .transcription-results h2 {
+    color: #ff4081;
+    text-align: left; /* Align titles to the left */
+}
+.upload-section, .tracks-section {
+    width: 48%; /* Adjust width */
+    display: inline-block; /* Ensure they are side by side */
+    vertical-align: top; /* Align to the top */
+}
+h3 {
+    color: #ff4081;
+    text-align: left; /* Align titles to the left */
+}
+form {
+    margin-bottom: 20px;
+}
+input[type="file"] {
+    margin-bottom: 10px;
+}
+input[type="submit"], button {
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+select {
+    background-color: #1f1f1f;
+    color: white;
+    border: 1px solid #ff4081;
+    padding: 10px;
+    font-size: 16px;
+}
+.track-details p {
+    color: #ffffff;
+    font-weight: bold;
+}
+audio {
+    width: 100%;
+    margin-top: 20px;
+}
+.transcription-controls, .transcription-results {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #ff4081;
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    text-align: center;
+}
+.transcription-controls h2, .transcription-results h2 {
+    color: #ff4081;
+    text-align: left; /* Align titles to the left */
+}
+.transcription-controls p, .transcription-results ul {
+    color: #ffffff;
+    font-weight: bold;
+}
+.midi-files-box {
+    background-color: #2c2c2c; /* Darker background */
+    border: 1px solid #3c3c3c; /* Darker border */
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.midi-files-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.midi-files-box th, .midi-files-box td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #3c3c3c;
+}
+.midi-files-box th {
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+.midi-files-box tr:hover {
+    background-color: #444444;
+}
